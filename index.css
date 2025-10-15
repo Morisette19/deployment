@@ -1,0 +1,394 @@
+/* General Resets and Typography */
+:root {
+  --primary-color: #4a148c; /* Deep Purple */
+  --secondary-color: #e57373; /* Light Red/Coral for accents if needed */
+  --text-color: #333;
+  --link-color: white;
+  --background-light: #f4f4f4;
+  --background-white: #ffffff;
+  --category-bg: #5e35b1; /* Slightly lighter purple for categories */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+menu,
+ul {
+  list-style: none;
+}
+
+/* Page Layout */
+.page {
+  padding: 0 1rem;
+}
+
+.container {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+header.page {
+  background-color: var(--primary-color);
+  color: var(--link-color);
+}
+
+header nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header menu {
+  display: flex;
+  gap: 1.5rem;
+}
+
+header menu a {
+  padding: 0.25rem 0;
+  transition: opacity 0.2s;
+}
+
+header menu a:hover {
+  opacity: 0.8;
+}
+
+.screen-sm {
+  display: none; /* Hide small menu by default */
+}
+
+/* Header Bottom Section (Logo, Search, Ad) */
+header .bottom .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  max-width: 5000px;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+header .bottom .container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: var(--link-color);
+}
+
+header .bottom .container form {
+  display: flex;
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 2rem;
+}
+
+#product_search {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+header .bottom .container form button {
+  background-color: var(--secondary-color);
+  color: var(--link-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+header .bottom .container .ad {
+  background-color: var(--secondary-color);
+  color: var(--link-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Main Content Layout */
+.page.container {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  min-height: 70vh; /* Ensure footer is pushed down */
+}
+
+/* Categories Navigation (Sidebar) */
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* Links are block-level and stack */
+  flex-basis: 200px; /* Fixed width for sidebar */
+  flex-shrink: 0;
+  min-width: 25ch; /* Prevents too narrow sidebar */
+  padding: 0.5rem;
+}
+
+.categories a {
+  display: block;
+  background-color: var(--category-bg);
+  color: var(--link-color);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.categories a:hover {
+  background-color: var(--primary-color);
+}
+
+/* Products Styles */
+/* Products Grid */
+main[aria-label="Products"] {
+  flex-grow: 1;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.product {
+  background-color: var(--background-white);
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Allows shrinking in grid */
+}
+
+.product h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5rem;
+}
+
+.product figure {
+  margin-bottom: 0.75rem;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 200px; /* Visual sizing from screenshot */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product .description {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Pushes footer to bottom */
+}
+
+.product footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  background-color: var(--primary-color);
+}
+
+.product .price {
+  display: flex;
+  align-items: baseline;
+  color: white;
+}
+
+.product .price dt {
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-right: 0.3rem;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.product .price dd {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.product footer button {
+  background-color: black;
+  color: var(--link-color);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background-color 0.2s;
+}
+
+.product footer button:hover {
+  background-color: var(--category-bg);
+}
+
+/* Footer Styles */
+@media (min-width: 720px) {
+  footer.page {
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+  }
+}
+footer.page {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  gap: 2rem;
+}
+footer.page h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid white;
+  padding-bottom: 0.25rem 0;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 800px; /* Keeps footer links centered/grouped */
+  margin: 0 auto;
+}
+
+footer.page menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+footer.page menu a {
+  color: white;
+  font-size: 0.9rem;
+  transition: text-decoration 0.2s;
+}
+
+footer.page menu a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+  .page.container {
+    flex-direction: column; /* Stack sidebar and main content */
+  }
+
+  .categories {
+    flex-basis: auto; /* Allow full width */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for categories */
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .categories a {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 4px;
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  header nav .container {
+    border-bottom: none;
+  }
+
+  header menu.screen-lg {
+    display: none; /* Hide Log In/Account/Cart */
+  }
+
+  header menu.screen-sm {
+    display: block; /* Show menu icon */
+  }
+
+  header .bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  header h1 {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  header form {
+    order: 3; /* Move search below H1 */
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+
+  header .ad {
+    display: none; /* Hide ad on small screens */
+  }
+
+  .categories {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for categories */
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  footer h2 {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories {
+    grid-template-columns: 1fr; /* Full width categories */
+  }
+
+  .products {
+    grid-template-columns: 1fr; /* Single column product list */
+  }
+}
+
+/* Google Material Symbols Adjustments */
+.material-symbols-sharp {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  vertical-align: middle;
+}
